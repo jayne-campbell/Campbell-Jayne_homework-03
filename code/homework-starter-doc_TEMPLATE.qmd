@@ -95,11 +95,13 @@ ggpairs(drought_exp_clean, # data frame
 
 Choose 3 pairs of variables to compare. Make notes of those comparisons below.    
 
-**insert comparison 1 here**  
 
-**insert comparison 2 here**  
+1. Total mass is positively correlated the mass of roots (Pearson's r = 0.858).
 
-**insert comparison 3 here**
+2. The shoot mass is positively correlated with the root mass (Pearson's r = 0.553)
+
+3. Total mass is strongly positively correlated with shoot mass (Pearson's r = 0.902)
+
 
 ## Preliminary visualizations  
 
