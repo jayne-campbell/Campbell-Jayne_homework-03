@@ -8,7 +8,7 @@ link: https://github.com/jayne-campbell/Campbell-Jayne_homework-03.git
 
 Homework 3
 
-
+Loading in packages and data
 ```{r} 
 # general use
 library(tidyverse)
@@ -40,15 +40,75 @@ class(drought_exp)
 
 ```
 
+cleaning the data
+```{r}
+# cleaning
+drought_exp_clean <- drought_exp %>% 
+  clean_names() %>% # nicer column names
+  mutate(species_name = case_when( # adding column with species scientific names
+    species == "ENCCAL" ~ "Encelia californica", # bush sunflower
+    species == "ESCCAL" ~ "Eschscholzia californica", # California poppy
+    species == "PENCEN" ~ "Penstemon centranthifolius", # Scarlet bugler
+    species == "GRICAM" ~ "Grindelia camporum", # great valley gumweed
+    species == "SALLEU" ~ "Salvia leucophylla", # Purple sage
+    species == "STIPUL" ~ "Nasella pulchra", # Purple needlegrass
+    species == "LOTSCO" ~ "Acmispon glaber" # deerweed
+  )) %>% 
+  relocate(species_name, .after = species) %>% # moving species_name column after species
+  mutate(water_treatment = case_when( # adding column with full treatment names
+    water == "WW" ~ "Well watered",
+    water == "DS" ~ "Drought stressed"
+  )) %>% 
+  relocate(water_treatment, .after = water) # moving water_treatment column after water
+```
+
+
 Problem 1. Multiple linear regression: model selection and construction
 
 a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
 
+Table 1. Five models that predict the total biomass of plant species. Each row represents one of the models. The columns represent the model number, the model, and the predictors for that model. 
 
+1. null model: Total mass is not predicted by any of the three predictors.
+  no predictors
+
+2. saturated model: Total mass predicted by SLA, water treatment, and species. (all three)
+  predictors = SLA, water treatment, and species
+  
+3. Total biomass as a function of SLA and water treatment 
+  predictors = SLA and water treatment
+  
+4. Total biomass as a function of SLA and species
+  predictors = SLA and species
+  
+5. Total biomass as a function of water treatment and species
+  predictors = water treatment and species 
+  
 b. Write a 5-6 sentence "statistical methods" section
 
+In order to examine the influence of , , and  on biomass, I 
+
+Out of the five models we have tried, the best model is the one that includes the water treatment and species. 
 
 c. Make a visualization of the model predictions with underlying data for you "best" model
+
+```{r}
+# model of total biomass as a function of water treatment and species
+model5 <- lm(total_g ~ species_name + water_treatment, # formula for model
+             data = drought_exp_clean) # data frame
+
+plot(model5) # printing plots for model 5
+```
+```{r}
+summary(model5) # summary of this model
+```
+```{r}
+model_preds <- ggpredict(model4, 
+                         terms = c("water_treatment", 
+                                   "species_name"))
+
+View(model_preds) # View the predictions as a data frame
+```
 
 
 
