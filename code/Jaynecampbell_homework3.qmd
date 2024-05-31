@@ -4,29 +4,79 @@ author: "Jayne Campbell"
 format: html
 editor: visual
 ---
-
-## 
+link: https://github.com/jayne-campbell/Campbell-Jayne_homework-03.git
 
 Homework 3
 
 
 ```{r} 
-library(tidyverse) # loading in packages 
+# general use
+library(tidyverse)
 library(readxl)
 library(here)
 library(janitor)
+
+# visualizing pairs
 library(GGally)
+
+# model selection
 library(MuMIn)
+
+# model predictions
 library(ggeffects)
+
+# model tables
 library(gtsummary)
 library(flextable)
 library(modelsummary)
+
+drought_exp <- read_xlsx(path = here("data", # reading in data
+                                     "Valliere_etal_EcoApps_Data.xlsx"),
+                         sheet = "First Harvest")
+
+# quick look at data 
+str(drought_exp)
+class(drought_exp)
 
 ```
 
 Problem 1. Multiple linear regression: model selection and construction
 
-a. Make a table or list of all the models from class and the last one you constructed on your own. write a caption
+a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
+
+
+b. Write a 5-6 sentence "statistical methods" section
+
+
+c. Make a visualization of the model predictions with underlying data for you "best" model
+
+
+
+Problem 2. Affective visualization
+
+a. Describe is words what an affective visualization could look like for your personal data
+
+b. Create a sketch on paper of your idea
+
+- insert a photo of it 
+
+c. Make a draft of your visualization
+
+d. Write an artist statement 
+
+
+
+Problem 3. statistical critique
+
+a. Revisit and summarize
+
+b. Visual clarity
+
+c. Aesthetic clarity
+
+d. Recommendations
+
+
 
 
 
