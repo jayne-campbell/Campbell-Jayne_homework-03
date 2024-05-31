@@ -103,13 +103,49 @@ plot(model5) # printing plots for model 5
 summary(model5) # summary of this model
 ```
 ```{r}
-model_preds <- ggpredict(model4, 
+model_preds <- ggpredict(model4, # create model predictions 
                          terms = c("water_treatment", 
                                    "species_name"))
 
 View(model_preds) # View the predictions as a data frame
 ```
 
+Creating visualization for best model (predictors = water treatment and species)
+
+```{r}
+# creating new data frame of model predictions for plotting
+model_preds_for_plotting <- model_preds %>% 
+  rename( # renaming columns to make this easier to use
+         water_treatment = x,
+         species_name = group)
+
+# use View(model_preds_for_plotting) 
+# to compare this to the original model_preds data frame
+
+ggplot() +
+  # underlying data
+  geom_point(data = drought_exp_clean,
+             aes(x = species_name,
+                 y = total_g,
+                 color = water_treatment)) +
+  # model prediction 95% CI ribbon
+  geom_ribbon(data = model_preds_for_plotting,
+              aes(x = species_name, 
+                  y = predicted,
+                  ymin = conf.low,
+                  ymax = conf.high,
+                  fill = water_treatment),
+              alpha = 0.2) +
+  # model prediction lines
+  geom_line(data = model_preds_for_plotting,
+            aes(x = species_name, 
+                y = predicted,
+                color = water_treatment)) +
+  # cleaner theme
+  theme_classic() +
+  # creating different panels for species
+  facet_wrap(~species_name) 
+```
 
 
 Problem 2. Affective visualization
