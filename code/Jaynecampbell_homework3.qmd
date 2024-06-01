@@ -191,7 +191,7 @@ I think that authors did a great job in minimizing visual clutter as the figures
 
 d. Recommendations
 
-While I like the images of the fish, I think the size of the adult fish in the Califonria sheephead figure is distracting and potentially misleading. Also, the images are confusing because there are three images in the first figure to represent what I am assuming is an adult male, adult female, and a juvenile, while the second figure only has one image. I would also recommend adding in some underlying data since the bar graohs themselves are only representing one value; the mean density. It would be beneficial for the bar graphs to also be colored and slightly transparent because in the black bars, you cannot see where the standard error line goes. I think they should include underlying data behind the new transparent bar graphs.  
+While I like the images of the fish, I think the size of the adult fish in the California sheephead figure is distracting and potentially misleading. Also, the images are confusing because there are three images in the first figure to represent what I am assuming is an adult male, adult female, and a juvenile, while the second figure only has one image. If the authors cannot find all the three images for both species, I would recommend taking out the pictures. I would also advise adding in the underlying data since the bar graphs themselves are only representing one value; the mean density. It would also be beneficial for the bar graphs to be colored and slightly transparent because in the black bars, you cannot see where the standard error line goes.  
 
 
 
