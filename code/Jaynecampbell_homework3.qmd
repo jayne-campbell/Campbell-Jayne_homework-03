@@ -177,12 +177,21 @@ Problem 3. statistical critique
 
 a. Revisit and summarize
 
+The authors used a two-way ANOVA test to analyze variance in order to investigate the variation in both density and biomass of fish among different locations and sampling dates. This was done to evaluate whether or not and how a small marine reserve impacts the structure of temperature reef fish assemblages near the isthus at Santa Catalina Island in California. The authors visualized the results of the ANOVA test by creating species-specific figures with bar graphs that showed the mean density of the species.  
+
+*insert figures
+
 b. Visual clarity
+
+I think that the authors did an effective job of clearly visually representing their statistics in figures. Firstly, the x and y axis are in logical positions because mean density is on the y axis and the x axis is used for the categories; total, adult, and juvenile, which each have a paired bar graphs. The bar graphs do show summary statistics as they represent the mean densities and have error bars that represent the standard error, but underlying data is not included. The figure captions describe how the ANOVA test information corresponds in terms of a lack of or significant differences between reserve and not reserve fish. 
 
 c. Aesthetic clarity
 
+I think that authors did a great job in minimizing visual clutter as the figures are straightforward and easy to digest and understand when paired with the captions. The data to ink ratio is thus close to one because eliminating anything would hinder the effectiveness f its communication of data. Every aspect included is necessary to interpret its meaning and understand how the mean density is connected to fish being in or not in a reserve.
+
 d. Recommendations
 
+While I like the images of the fish, I think the size of the adult fish in the Califonria sheephead figure is distracting and potentially misleading. Also, the images are confusing because there are three images in the first figure to represent what I am assuming is an adult male, adult female, and a juvenile, while the second figure only has one image. I would also recommend adding in some underlying data since the bar graohs themselves are only representing one value; the mean density. It would be beneficial for the bar graphs to also be colored and slightly transparent because in the black bars, you cannot see where the standard error line goes. I think they should include underlying data behind the new transparent bar graphs.  
 
 
 
