@@ -91,19 +91,19 @@ print(modeldatatable)
   
 b. Write a 5-6 sentence "statistical methods" section
 
-In this scenario, we're interested in how three variables affect total biomass: species (categorical), water treatment (categorical), specific leaf area (SLA, numeric). In order to examine the influence of species, water treatment, and specific leaf area on plant biomass, I created five models based on the three potential predictors, which included a null model, a satutated model, and three models with two predictors each. To determine which linear model best predicted the biomass, I used Akaike Information Criterion (AIC), which takes into account how well the model predicts the data as well as increasing complexity. Out of the five models we have tried, the best model was the one that included water treatment and species because it produced the lowest AIC (AIcc = -158.8). I visually determined that my final model conformed to the assumptions of a linear model by looking at the diagnostics and ensuring there was random and even dispersion, homoscedasticity, normality of variance and no excessive outliers. 
+In this scenario, we're interested in how three variables affect total biomass: species (categorical), water treatment (categorical), specific leaf area (SLA, numeric). In order to examine the influence of species, water treatment, and specific leaf area on plant biomass, I created five models based on the three potential predictors. These included a null model, a saturated model, and three models with two predictors each. To determine which linear model best predicted the biomass, I used Akaike Information Criterion (AIC), which takes into account how well the model predicts the data as well as increasing complexity. Out of the five models we have tried, the best model was the one that included water treatment and species because it produced the lowest AIC (AIcc = -158.8). I visually determined that my final model conformed to the assumptions of a linear model by looking at the diagnostics and ensuring there was random and even dispersion, homoscedasticity, normality of variance and no excessive outliers. 
 
 c. Make a visualization of the model predictions with underlying data for you "best" model
 
 ```{r}
 # model of total biomass as a function of water treatment and species
-model5 <- lm(total_g ~ species_name + water_treatment, # formula for model
+model4 <- lm(total_g ~ species_name + water_treatment, # formula for model
              data = drought_exp_clean) # data frame
 
-plot(model5) # printing plots for model 5
+plot(model4) # printing plots for model 4
 ```
 ```{r}
-summary(model5) # summary of this model
+summary(model4) # summary of this model
 ```
 ```{r}
 model_preds <- ggpredict(model4, # create model predictions 
@@ -122,15 +122,11 @@ model_preds_for_plotting <- model_preds %>%
          water_treatment = x,
          species_name = group)
 
-# use View(model_preds_for_plotting) 
-# to compare this to the original model_preds data frame
-
 ggplot() +
   # underlying data
   geom_point(data = drought_exp_clean,
-             aes(x = species_name,
-                 y = total_g,
-                 color = water_treatment)) +
+             aes(x = water_treatment,
+                 y = total_g,)) +
   # model prediction 95% CI ribbon
   geom_ribbon(data = model_preds_for_plotting,
               aes(x = species_name, 
@@ -140,30 +136,42 @@ ggplot() +
                   fill = water_treatment),
               alpha = 0.2) +
   # model prediction lines
-  geom_line(data = model_preds_for_plotting,
+   geom_line(data = model_preds_for_plotting,
             aes(x = species_name, 
                 y = predicted,
                 color = water_treatment)) +
   # cleaner theme
   theme_classic() +
   # creating different panels for species
-  facet_wrap(~species_name) 
+  facet_wrap(~species_name)
 ```
 
+d. write a caption for your visualization
+  include a data citation
+  
+e. Results section
+
+The predictors, water treatment and species, best described the total mass based on model statistics...
+On average, the biomass was lower for drought stressed plants than for well watered plants, which aligns with biological knowledge. 
+On average, plant species with larger ranges tended to have larger biomasses. 
 
 Problem 2. Affective visualization
 
-a. Describe is words what an affective visualization could look like for your personal data
+a. Describe in words what an affective visualization could look like for your personal data
+
+Since affective visualizations prioritize creativity and should convey emotion, I would like to draw images of the types of caffeinated beverages I have been drinking. I could do different shapes and colors for each beverage and make the sizes dependent on the amount of caffeine in each. I could also organize them by time of day by having a symbol for morning, afternoon, and night and clump the other symbols around them. I would create a key for each of the symbols and describe what they represent.
 
 b. Create a sketch on paper of your idea
 
-- insert a photo of it 
+
 
 c. Make a draft of your visualization
+Painting
+
 
 d. Write an artist statement 
 
-
+This visualization shows my consumption of caffeinated beverages in terms of the type, approximate caffiene content, and the time of day they were consumed at. I was very influenced by the Dear Data project done by Giorgia Lupi and Stefanie Posavec and their use of symbols and keys to convey information and messages. My work is in the form of acrylic paint and ink pen on a 8 by 12 inch canvas. I created my work by first creating an outline of where I wanted everything and using a ruler and pencil to map it out. Then I began to use acrylic paint and a pen to fill in and draw the symbols and write the key. 
 
 Problem 3. statistical critique
 
