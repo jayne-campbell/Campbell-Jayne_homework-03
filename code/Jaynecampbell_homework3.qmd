@@ -171,7 +171,7 @@ Painting
 
 d. Write an artist statement 
 
-This visualization shows my consumption of caffeinated beverages in terms of the type, approximate caffiene content, and the time of day they were consumed at. I was very influenced by the Dear Data project done by Giorgia Lupi and Stefanie Posavec and their use of symbols and keys to convey information and messages. My work is in the form of acrylic paint and ink pen on a 8 by 12 inch canvas. I created my work by first creating an outline of where I wanted everything and using a ruler and pencil to map it out. Then I began to use acrylic paint and a pen to fill in and draw the symbols and write the key. 
+This visualization shows my consumption of caffeinated beverages in terms of the type, approximate caffeine content, and the time of day they were consumed at. I was very influenced by the Dear Data project done by Giorgia Lupi and Stefanie Posavec and their use of symbols and keys to convey information and messages. My work is in the form of acrylic paint and ink pen on a 8 by 12 inch canvas. I created my work by first creating an outline of where I wanted everything and using a ruler and pencil to map it out. Then I began to use acrylic paint and a pen to fill in and draw the symbols and write the key. 
 
 Problem 3. statistical critique
 

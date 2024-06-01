@@ -163,7 +163,7 @@ What is the saturated model?
 
 In class we are going to try two more models:  
 
-2.  **total biomass as a function of SLA and water treatment**  
+2.  **total biomass as a function of SLA and water treatment** 
 3.  **total biomass as a function of SLA and species**  
 
 For homework, you will construct one more model:  
@@ -212,6 +212,14 @@ model3 <- lm(total_g ~ sla + species_name,
 
 plot(model3)
 ```
+my model
+
+```{r}
+model4 <- lm(total_g ~ species_name + water_treatment,
+             data = drought_exp_clean)
+
+plot(model4)
+```
 
 # Model selection
 
@@ -221,13 +229,14 @@ From the `MuMIn` package
 model.sel(model0,
           model1, 
           model2, 
-          model3)
+          model3,
+          model4)
 ```
 *delta = 0 for the best model*
 
-Out of the four models we have tried, the best model is the one that includes **insert predictors here**  
-(the saturated model)
-predictors (specific leaf area, water treatment, and species)
+Out of the four models we have tried, the best model is the one that includes water treatment and species 
+(the fifth model)
+predictors = water treatment and species
 
 Note that this may change once you fit and compare the other model!
 
@@ -236,7 +245,7 @@ Note that this may change once you fit and compare the other model!
 # Model summary
 
 ```{r}
-summary(model1)
+summary(model4)
 ```
 
 What are the reference levels?  
@@ -264,13 +273,11 @@ look at well watered row and compare to reference
 **Note:** only plot terms in the model you select - if your doesn't include one of these terms, take it out and adjust the plotting code accordingly!
 
 ```{r}
-model_preds <- ggpredict(model1, 
-                         terms = c("sla",
-                                   "water_treatment", 
+model_preds <- ggpredict(model4, 
+                         terms = c("water_treatment", 
                                    "species_name"))
 
-# use View(model_preds) to see the predictions as a data frame
-# use model_preds to see the predictions formatted nicely
+model_preds # see the predictions as a data frame
 ```
 
 # Visualization

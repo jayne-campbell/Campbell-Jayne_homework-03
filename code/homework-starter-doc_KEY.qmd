@@ -180,6 +180,8 @@ You will then compare all 5 models to determine which best describes total bioma
 ```{r null-model0}
 model0 <- lm(total_g ~ 1, # formula
              data = drought_exp_clean) # data frame
+
+model0
 ```
 
 ## 1. total biomass as a function of SLA, water treatment, and species
