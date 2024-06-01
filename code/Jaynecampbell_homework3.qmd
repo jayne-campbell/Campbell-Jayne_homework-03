@@ -83,7 +83,7 @@ set_header_labels(Model_numbers = "Model numbers", Model = "Model", Predictors =
 ```
 
 
-Table 1. Five models that predict the total biomass of plant species. Each row represents one of the models. The columns represent the model number, the model, and the predictors for that model. SLA stands for the specific leaf area, which is the ratio fo leaf area to leaf dry mass. 
+Table 1. Five models that predict the total biomass of plant species. Each row represents one of the models. The columns represent the model number, the model, and the predictors for that model. SLA stands for the specific leaf area, which is the surface area of a leaf divided by its dry mass and it represents life strategy (mm^2^/g).
 
 ```{r}
 print(modeldatatable)
@@ -91,10 +91,7 @@ print(modeldatatable)
   
 b. Write a 5-6 sentence "statistical methods" section
 
-In order to examine the influence of , , and  on biomass, I 
-
-Out of the five models we have tried, the best model is the one that includes the water treatment and species. 
-To determine the model that best described the biomass 
+In this scenario, we're interested in how three variables affect total biomass: species (categorical), water treatment (categorical), specific leaf area (SLA, numeric). In order to examine the influence of species, water treatment, and specific leaf area on plant biomass, I created five models based on the three potential predictors, which included a null model, a satutated model, and three models with two predictors each. To determine which linear model best predicted the biomass, I used Akaike Information Criterion (AIC), which takes into account how well the model predicts the data as well as increasing complexity. Out of the five models we have tried, the best model was the one that included water treatment and species because it produced the lowest AIC (AIcc = -158.8). I visually determined that my final model conformed to the assumptions of a linear model by looking at the diagnostics and ensuring there was random and even dispersion, homoscedasticity, normality of variance and no excessive outliers. 
 
 c. Make a visualization of the model predictions with underlying data for you "best" model
 
