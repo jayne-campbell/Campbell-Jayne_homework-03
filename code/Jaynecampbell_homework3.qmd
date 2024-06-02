@@ -1,7 +1,7 @@
 ---
 title: "homework03JC"
 author: "Jayne Campbell"
-format: html
+format: docx
 editor: visual
 ---
 link: https://github.com/jayne-campbell/Campbell-Jayne_homework-03.git
@@ -68,10 +68,10 @@ Problem 1. Multiple linear regression: model selection and construction
 a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
 
 ```{r}
-models <- data.frame(
+models <- data.frame( # creating a data frame for the table
   Model_numbers = c("Model 0", "Model 1", "Model 2", "Model 3", "Model 4"),
   Model = c("null model", "saturated model", "two predictors", "two predictors", "two predictors"),
-  Predictors = c("none", "SLA, water treatment, and species", "SLA and water treatment", "SLA and species", "water treatment and species")
+  Predictors = c("none", "SLA, water treatment, and species", "SLA and water treatment", "SLA and species", "water treatment and species") # creating rows and columns
 )
 
 modeldatatable <- flextable(models) %>% # create flextable

@@ -147,11 +147,8 @@ The following objects are masked from 'package:stats':
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeffects)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># model tables</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#BlackLivesMatter</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'flextable'
@@ -164,7 +161,7 @@ The following object is masked from 'package:purrr':
 
     compose</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
   backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
@@ -179,12 +176,12 @@ Silence this message forever:
 
   config_modelsummary(startup_message = FALSE)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>drought_exp <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="co"># reading in data</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"Valliere_etal_EcoApps_Data.xlsx"</span>),</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sheet =</span> <span class="st">"First Harvest"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># quick look at data </span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(drought_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>drought_exp <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="co"># reading in data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"Valliere_etal_EcoApps_Data.xlsx"</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sheet =</span> <span class="st">"First Harvest"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># quick look at data </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(drought_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [70 × 13] (S3: tbl_df/tbl/data.frame)
  $ Species            : chr [1:70] "ENCCAL" "ENCCAL" "ENCCAL" "ENCCAL" ...
@@ -201,53 +198,53 @@ Silence this message forever:
  $ Total (g)          : num [1:70] 0.455 0.329 0.45 0.359 0.352 ...
  $ R:S                : num [1:70] 0.8 1 0.9 0.7 0.5 0.8 1.2 3.1 0.9 1.2 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(drought_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(drought_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
 </div>
 </div>
 <p>cleaning the data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>drought_exp_clean <span class="ot">&lt;-</span> drought_exp <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> <span class="co"># nicer column names</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species_name =</span> <span class="fu">case_when</span>( <span class="co"># adding column with species scientific names</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"ENCCAL"</span> <span class="sc">~</span> <span class="st">"Encelia californica"</span>, <span class="co"># bush sunflower</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"ESCCAL"</span> <span class="sc">~</span> <span class="st">"Eschscholzia californica"</span>, <span class="co"># California poppy</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"PENCEN"</span> <span class="sc">~</span> <span class="st">"Penstemon centranthifolius"</span>, <span class="co"># Scarlet bugler</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"GRICAM"</span> <span class="sc">~</span> <span class="st">"Grindelia camporum"</span>, <span class="co"># great valley gumweed</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"SALLEU"</span> <span class="sc">~</span> <span class="st">"Salvia leucophylla"</span>, <span class="co"># Purple sage</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"STIPUL"</span> <span class="sc">~</span> <span class="st">"Nasella pulchra"</span>, <span class="co"># Purple needlegrass</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"LOTSCO"</span> <span class="sc">~</span> <span class="st">"Acmispon glaber"</span> <span class="co"># deerweed</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(species_name, <span class="at">.after =</span> species) <span class="sc">%&gt;%</span> <span class="co"># moving species_name column after species</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">water_treatment =</span> <span class="fu">case_when</span>( <span class="co"># adding column with full treatment names</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    water <span class="sc">==</span> <span class="st">"WW"</span> <span class="sc">~</span> <span class="st">"Well watered"</span>,</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    water <span class="sc">==</span> <span class="st">"DS"</span> <span class="sc">~</span> <span class="st">"Drought stressed"</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(water_treatment, <span class="at">.after =</span> water) <span class="co"># moving water_treatment column after water</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>drought_exp_clean <span class="ot">&lt;-</span> drought_exp <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> <span class="co"># nicer column names</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species_name =</span> <span class="fu">case_when</span>( <span class="co"># adding column with species scientific names</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"ENCCAL"</span> <span class="sc">~</span> <span class="st">"Encelia californica"</span>, <span class="co"># bush sunflower</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"ESCCAL"</span> <span class="sc">~</span> <span class="st">"Eschscholzia californica"</span>, <span class="co"># California poppy</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"PENCEN"</span> <span class="sc">~</span> <span class="st">"Penstemon centranthifolius"</span>, <span class="co"># Scarlet bugler</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"GRICAM"</span> <span class="sc">~</span> <span class="st">"Grindelia camporum"</span>, <span class="co"># great valley gumweed</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"SALLEU"</span> <span class="sc">~</span> <span class="st">"Salvia leucophylla"</span>, <span class="co"># Purple sage</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"STIPUL"</span> <span class="sc">~</span> <span class="st">"Nasella pulchra"</span>, <span class="co"># Purple needlegrass</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"LOTSCO"</span> <span class="sc">~</span> <span class="st">"Acmispon glaber"</span> <span class="co"># deerweed</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(species_name, <span class="at">.after =</span> species) <span class="sc">%&gt;%</span> <span class="co"># moving species_name column after species</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">water_treatment =</span> <span class="fu">case_when</span>( <span class="co"># adding column with full treatment names</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    water <span class="sc">==</span> <span class="st">"WW"</span> <span class="sc">~</span> <span class="st">"Well watered"</span>,</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    water <span class="sc">==</span> <span class="st">"DS"</span> <span class="sc">~</span> <span class="st">"Drought stressed"</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(water_treatment, <span class="at">.after =</span> water) <span class="co"># moving water_treatment column after water</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Problem 1. Multiple linear regression: model selection and construction</p>
 <ol type="a">
 <li>Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model_numbers =</span> <span class="fu">c</span>(<span class="st">"Model 0"</span>, <span class="st">"Model 1"</span>, <span class="st">"Model 2"</span>, <span class="st">"Model 3"</span>, <span class="st">"Model 4"</span>),</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"null model"</span>, <span class="st">"saturated model"</span>, <span class="st">"two predictors"</span>, <span class="st">"two predictors"</span>, <span class="st">"two predictors"</span>),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Predictors =</span> <span class="fu">c</span>(<span class="st">"none"</span>, <span class="st">"SLA, water treatment, and species"</span>, <span class="st">"SLA and water treatment"</span>, <span class="st">"SLA and species"</span>, <span class="st">"water treatment and species"</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>modeldatatable <span class="ot">&lt;-</span> <span class="fu">flextable</span>(models) <span class="sc">%&gt;%</span> <span class="co"># create flextable</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set_header_labels</span>(<span class="at">Model_numbers =</span> <span class="st">"Model numbers"</span>, <span class="at">Model =</span> <span class="st">"Model"</span>, <span class="at">Predictors =</span> <span class="st">"Predictors"</span>) <span class="sc">%&gt;%</span> <span class="co"># rename headers </span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">align =</span> <span class="st">"center"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">%&gt;%</span> <span class="co"># formatting </span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_vanilla</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold</span>(<span class="at">part =</span> <span class="st">"header"</span>) <span class="co">#bold everything in the header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model_numbers =</span> <span class="fu">c</span>(<span class="st">"Model 0"</span>, <span class="st">"Model 1"</span>, <span class="st">"Model 2"</span>, <span class="st">"Model 3"</span>, <span class="st">"Model 4"</span>),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"null model"</span>, <span class="st">"saturated model"</span>, <span class="st">"two predictors"</span>, <span class="st">"two predictors"</span>, <span class="st">"two predictors"</span>),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Predictors =</span> <span class="fu">c</span>(<span class="st">"none"</span>, <span class="st">"SLA, water treatment, and species"</span>, <span class="st">"SLA and water treatment"</span>, <span class="st">"SLA and species"</span>, <span class="st">"water treatment and species"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>modeldatatable <span class="ot">&lt;-</span> <span class="fu">flextable</span>(models) <span class="sc">%&gt;%</span> <span class="co"># create flextable</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set_header_labels</span>(<span class="at">Model_numbers =</span> <span class="st">"Model numbers"</span>, <span class="at">Model =</span> <span class="st">"Model"</span>, <span class="at">Predictors =</span> <span class="st">"Predictors"</span>) <span class="sc">%&gt;%</span> <span class="co"># rename headers </span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">align =</span> <span class="st">"center"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">%&gt;%</span> <span class="co"># formatting </span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_vanilla</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold</span>(<span class="at">part =</span> <span class="st">"header"</span>) <span class="co">#bold everything in the header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Table 1. Five models that predict the total biomass of plant species. Each row represents one of the models. The columns represent the model number, the model, and the predictors for that model. SLA stands for the specific leaf area, which is the surface area of a leaf divided by its dry mass and it represents life strategy (mm<sup>2</sup>/g).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(modeldatatable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(modeldatatable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a flextable object.
 col_keys: `Model_numbers`, `Model`, `Predictors` 
@@ -270,11 +267,11 @@ original dataset sample:
 <li>Make a visualization of the model predictions with underlying data for you “best” model</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model of total biomass as a function of water treatment and species</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_g <span class="sc">~</span> species_name <span class="sc">+</span> water_treatment, <span class="co"># formula for model</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> drought_exp_clean) <span class="co"># data frame</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model4) <span class="co"># printing plots for model 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model of total biomass as a function of water treatment and species</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_g <span class="sc">~</span> species_name <span class="sc">+</span> water_treatment, <span class="co"># formula for model</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> drought_exp_clean) <span class="co"># data frame</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model4) <span class="co"># printing plots for model 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Jaynecampbell_homework3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -289,7 +286,7 @@ original dataset sample:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model4) <span class="co"># summary of this model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model4) <span class="co"># summary of this model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -318,42 +315,42 @@ F-statistic: 27.08 on 7 and 62 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model_preds <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model4, <span class="co"># create model predictions </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"water_treatment"</span>, </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"species_name"</span>))</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(model_preds) <span class="co"># View the predictions as a data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>model_preds <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model4, <span class="co"># create model predictions </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"water_treatment"</span>, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"species_name"</span>))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(model_preds) <span class="co"># View the predictions as a data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Creating visualization for best model (predictors = water treatment and species)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating new data frame of model predictions for plotting</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>model_preds_for_plotting <span class="ot">&lt;-</span> model_preds <span class="sc">%&gt;%</span> </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>( <span class="co"># renaming columns to make this easier to use</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_treatment =</span> x,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">species_name =</span> group)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># underlying data</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> drought_exp_clean,</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> water_treatment,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> total_g,)) <span class="sc">+</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># model prediction 95% CI ribbon</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> model_preds_for_plotting,</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> species_name, </span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> predicted,</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymin =</span> conf.low,</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymax =</span> conf.high,</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> water_treatment),</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># model prediction lines</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">data =</span> model_preds_for_plotting,</span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> species_name, </span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> predicted,</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> water_treatment)) <span class="sc">+</span></span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cleaner theme</span></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating different panels for species</span></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating new data frame of model predictions for plotting</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>model_preds_for_plotting <span class="ot">&lt;-</span> model_preds <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>( <span class="co"># renaming columns to make this easier to use</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_treatment =</span> x,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">species_name =</span> group)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># underlying data</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> drought_exp_clean,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> water_treatment,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> total_g,)) <span class="sc">+</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># model prediction 95% CI ribbon</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> model_preds_for_plotting,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> species_name, </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> predicted,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymin =</span> conf.low,</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymax =</span> conf.high,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> water_treatment),</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># model prediction lines</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">data =</span> model_preds_for_plotting,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> species_name, </span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> predicted,</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> water_treatment)) <span class="sc">+</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cleaner theme</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating different panels for species</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_line()`: Each group consists of only one observation.
 ℹ Do you need to adjust the group aesthetic?
@@ -392,11 +389,22 @@ F-statistic: 27.08 on 7 and 62 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>This visualization shows my consumption of caffeinated beverages in terms of the type, approximate caffeine content, and the time of day they were consumed at. I was very influenced by the Dear Data project done by Giorgia Lupi and Stefanie Posavec and their use of symbols and keys to convey information and messages. My work is in the form of acrylic paint and ink pen on a 8 by 12 inch canvas. I created my work by first creating an outline of where I wanted everything and using a ruler and pencil to map it out. Then I began to use acrylic paint and a pen to fill in and draw the symbols and write the key.</p>
 <p>Problem 3. statistical critique</p>
 <ol type="a">
-<li><p>Revisit and summarize</p></li>
-<li><p>Visual clarity</p></li>
-<li><p>Aesthetic clarity</p></li>
-<li><p>Recommendations</p></li>
+<li>Revisit and summarize</li>
 </ol>
+<p>The authors used a two-way ANOVA test to analyze variance in order to investigate the variation in both density and biomass of fish among different locations and sampling dates. This was done to evaluate whether or not and how a small marine reserve impacts the structure of temperature reef fish assemblages near the isthus at Santa Catalina Island in California. The authors visualized the results of the ANOVA test by creating species-specific figures with bar graphs that showed the mean density of the species.</p>
+<p>*insert figures</p>
+<ol start="2" type="a">
+<li>Visual clarity</li>
+</ol>
+<p>I think that the authors did an effective job of clearly visually representing their statistics in figures. Firstly, the x and y axis are in logical positions because mean density is on the y axis and the x axis is used for the categories; total, adult, and juvenile, which each have a paired bar graphs. The bar graphs do show summary statistics as they represent the mean densities and have error bars that represent the standard error, but underlying data is not included. The figure captions describe how the ANOVA test information corresponds in terms of a lack of or significant differences between reserve and not reserve fish.</p>
+<ol start="3" type="a">
+<li>Aesthetic clarity</li>
+</ol>
+<p>I think that authors did a great job in minimizing visual clutter as the figures are straightforward and easy to digest and understand when paired with the captions. The data to ink ratio is thus close to one because eliminating anything would hinder the effectiveness f its communication of data. Every aspect included is necessary to interpret its meaning and understand how the mean density is connected to fish being in or not in a reserve.</p>
+<ol start="4" type="a">
+<li>Recommendations</li>
+</ol>
+<p>While I like the images of the fish, I think the size of the adult fish in the California sheephead figure is distracting and potentially misleading. Also, the images are confusing because there are three images in the first figure to represent what I am assuming is an adult male, adult female, and a juvenile, while the second figure only has one image. If the authors cannot find all the three images for both species, I would recommend taking out the pictures. I would also advise adding in the underlying data since the bar graphs themselves are only representing one value; the mean density. It would also be beneficial for the bar graphs to be colored and slightly transparent because in the black bars, you cannot see where the standard error line goes.</p>
 
 </main>
 <!-- /main column -->
