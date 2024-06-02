@@ -130,7 +130,7 @@ ggplot() +
                  y = total_g, 
                  color = water_treatment,
                  alpha = 0.1)) + # making underlying data more transparent
-  geom_point(data = model_preds_for_plotting,
+  geom_point(data = model_preds_for_plotting, # making predictions opaque 
              aes(x = water_treatment, y = predicted, color = water_treatment), alpha = 1) +
   theme_classic() + # changing the theme
   # creating different panels for species
@@ -141,14 +141,14 @@ ggplot() +
   ) +
   scale_color_manual(values = c("Drought stressed" = "#E69F00", "Well watered" = "#56B4E9")) + # changing the colors 
   theme(
-    axis.text.x = element_text(size = 6),
-    legend.position = "none") # making the text smaller so they don't overlap
-  
+    axis.text.x = element_text(size = 6), # making the text smaller so they don't overlap
+    legend.position = "none") # getting rid of the legend
 
 ```
 
-d. write a caption for your visualization
-  include a data citation
+d. Caption for your visualization (include a data citation)
+  
+  Figure 1. Total biomass of plant species as a function of water treatment. The y-axis represents total plant biomass in grams and the x-axis represents the water treatment received; either well watered or drought-stressed. Each of the seven figures represents a specific plant species. The transparent points consist of the underlying data and the opaque points represent the model predictions. 
   
 e. Results section
 
