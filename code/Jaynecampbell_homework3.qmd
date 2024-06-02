@@ -148,13 +148,13 @@ ggplot() +
 
 d. Caption for your visualization (include a data citation)
   
-  Figure 1. Total biomass of plant species as a function of water treatment. The y-axis represents total plant biomass in grams and the x-axis represents the water treatment received; either well watered or drought-stressed. Each of the seven figures represents a specific plant species. The transparent points consist of the underlying data and the opaque points represent the model predictions. 
+  Figure 1. Total biomass of plant species as a function of water treatment. The y-axis represents total plant biomass in grams and the x-axis represents the water treatment received; either well watered or drought-stressed. Each of the seven figures represents a specific plant species. The transparent points consist of the underlying data and the opaque points represent the model predictions (for example, the predicted biomass for the species, Encelia californica, when well watered was 0.3892). 
   
 e. Results section
 
-The predictors, water treatment and species, best described the total mass based on model statistics...
-On average, the biomass was lower for drought stressed plants than for well watered plants, which aligns with biological knowledge. 
-On average, plant species with larger ranges tended to have larger biomasses. 
+The best model used two predictors of biomass, water treatment and species, which best described the total biomass based on model statistics (F(7, 62) = 27.08, p < 0.001, alpha = 0.05, R^2 = 0.7257). On average, the biomass was lower for drought stressed plants than for well watered plants, which aligns with the biology of the system. On average, plant species with larger ranges tended to have larger biomass. It seems that the species changes the way that the treatment affects biomass because the treatment had a larger affect on certain species (ie. Eschscholzia californica) and a small effect on others (ie. Acmispon glaber). 
+
+If treatment is held constant (across all plant species), biomass increases by 0.12 units for each unit 
 
 Problem 2. Affective visualization
 
