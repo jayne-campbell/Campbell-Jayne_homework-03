@@ -71,11 +71,13 @@ a. Make a table or list of all the models from class and the last one you constr
 models <- data.frame( # creating a data frame for the table
   Model_numbers = c("Model 0", "Model 1", "Model 2", "Model 3", "Model 4"),
   Model = c("null model", "saturated model", "two predictors", "two predictors", "two predictors"),
-  Predictors = c("none", "SLA, water treatment, and species", "SLA and water treatment", "SLA and species", "water treatment and species") # creating rows and columns
+  Predictors = c("none", "SLA, water treatment, and species", "SLA and water treatment", "SLA and species", "water treatment and species"),
+  AIC = c("-75.0", "-153.8", "-95.8", "-124.1", "-156.2"),
+  delta_AIC = c("81.22", "2.44", "60.37", "32.12", "0.00")# creating rows and columns
 )
 
 modeldatatable <- flextable(models) %>% # create flextable
-set_header_labels(Model_numbers = "Model numbers", Model = "Model", Predictors = "Predictors") %>% # rename headers 
+set_header_labels(Model_numbers = "Model numbers", Model = "Model", Predictors = "Predictors", AIC = "AIC", delta_AIC = "delta AIC") %>% # rename headers 
   align(align = "center", part = "all") %>% # formatting 
   autofit() %>%
   theme_vanilla() %>%
@@ -91,7 +93,7 @@ print(modeldatatable)
   
 b. Write a 5-6 sentence "statistical methods" section
 
-In this scenario, we're interested in how three variables affect total biomass: species (categorical), water treatment (categorical), specific leaf area (SLA, numeric). In order to examine the influence of species, water treatment, and specific leaf area on plant biomass, I created five models based on the three potential predictors. These included a null model, a saturated model, and three models with two predictors each. To determine which linear model best predicted the biomass, I used Akaike Information Criterion (AIC), which takes into account how well the model predicts the data as well as increasing complexity. Out of the five models we have tried, the best model was the one that included water treatment and species because it produced the lowest AIC (AIcc = -158.8). I visually determined that my final model conformed to the assumptions of a linear model by looking at the diagnostics and ensuring there was random and even dispersion, homoscedasticity, normality of variance and no excessive outliers. 
+In this scenario, we're interested in how three variables affect total plant biomass: species (categorical), water treatment (categorical), and specific leaf area (SLA, numeric). In order to examine the influence of these predictors on plant biomass, I created five models based on the three potential predictors. These included a null model, a saturated model, and three models with two predictors each. To determine which linear model best predicted the biomass, I used the Akaike Information Criterion (AIC), which takes into account how well the model predicts the data as well as increasing complexity. Out of the five models we tested, the best model was the one that included water treatment and species because it produced the lowest AIC. I visually determined that my final model conformed to the assumptions of a linear model by looking at the diagnostics and ensuring there was random and even dispersion, homoscedasticity, normality of variance, and no excessive outliers. 
 
 c. Make a visualization of the model predictions with underlying data for you "best" model
 
@@ -101,10 +103,10 @@ model4 <- lm(total_g ~ species_name + water_treatment, # formula for model
              data = drought_exp_clean) # data frame
 
 plot(model4) # printing plots for model 4
-```
-```{r}
+
 summary(model4) # summary of this model
 ```
+
 ```{r}
 model_preds <- ggpredict(model4, # create model predictions 
                          terms = c("water_treatment", 
@@ -118,32 +120,31 @@ Creating visualization for best model (predictors = water treatment and species)
 ```{r}
 # creating new data frame of model predictions for plotting
 model_preds_for_plotting <- model_preds %>% 
-  rename( # renaming columns to make this easier to use
+  rename( # renaming columns
          water_treatment = x,
          species_name = group)
-
 ggplot() +
   # underlying data
   geom_point(data = drought_exp_clean,
              aes(x = water_treatment,
-                 y = total_g,)) +
-  # model prediction 95% CI ribbon
-  geom_ribbon(data = model_preds_for_plotting,
-              aes(x = species_name, 
-                  y = predicted,
-                  ymin = conf.low,
-                  ymax = conf.high,
-                  fill = water_treatment),
-              alpha = 0.2) +
-  # model prediction lines
-   geom_line(data = model_preds_for_plotting,
-            aes(x = species_name, 
-                y = predicted,
-                color = water_treatment)) +
-  # cleaner theme
-  theme_classic() +
+                 y = total_g, 
+                 color = water_treatment,
+                 alpha = 0.1)) + # making underlying data more transparent
+  geom_point(data = model_preds_for_plotting,
+             aes(x = water_treatment, y = predicted, color = water_treatment), alpha = 1) +
+  theme_classic() + # changing the theme
   # creating different panels for species
-  facet_wrap(~species_name)
+  facet_wrap(~species_name, scales = "free_x") +
+  labs( # changing axis names
+    x = "Water treatment",
+    y = "Total biomass (grams)"
+  ) +
+  scale_color_manual(values = c("Drought stressed" = "#E69F00", "Well watered" = "#56B4E9")) + # changing the colors 
+  theme(
+    axis.text.x = element_text(size = 6),
+    legend.position = "none") # making the text smaller so they don't overlap
+  
+
 ```
 
 d. write a caption for your visualization
