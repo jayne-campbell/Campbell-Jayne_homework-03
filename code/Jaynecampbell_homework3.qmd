@@ -111,7 +111,6 @@ summary(model4) # summary of this model
 model_preds <- ggpredict(model4, # create model predictions 
                          terms = c("water_treatment", 
                                    "species_name"))
-
 View(model_preds) # View the predictions as a data frame
 ```
 
@@ -154,8 +153,6 @@ e. Results section
 
 The best model used two predictors of biomass, water treatment and species, which best described the total biomass based on model statistics (F(7, 62) = 27.08, p < 0.001, alpha = 0.05, R^2 = 0.7257). On average, the biomass was lower for drought stressed plants than for well watered plants, which aligns with the biology of the system. On average, plant species with larger ranges tended to have larger biomass. It seems that the species changes the way that the treatment affects biomass because the treatment had a larger affect on certain species (ie. Eschscholzia californica) and a small effect on others (ie. Acmispon glaber). 
 
-If treatment is held constant (across all plant species), biomass increases by 0.12 units for each unit 
-
 Problem 2. Affective visualization
 
 a. Describe in words what an affective visualization could look like for your personal data
@@ -165,9 +162,7 @@ Since affective visualizations prioritize creativity and should convey emotion, 
 b. Create a sketch on paper of your idea
 
 
-
 c. Make a draft of your visualization
-Painting
 
 
 d. Write an artist statement 
